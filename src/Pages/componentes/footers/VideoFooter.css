@@ -1,0 +1,59 @@
+.VideoFooter{
+    position: relative;
+    bottom: 20%; /*vai ficar 200 do chao*/
+    color: white;
+    margin-left: 30px; /*espça da lateral*/
+}
+
+.VideoFooter__text h3{
+    padding-bottom: 20px; /*da espaça em baixo*/
+
+}
+
+.VideoFooter__text p{
+    padding-bottom: 20px; /*da espaça em baixo*/
+}
+
+.VideoFooter__music{
+    display: flex;
+}
+
+.VideoFooterMusic__text{
+    width: 80%;/*aumenta o tamanha da caixa*/
+    overflow-x: hidden;/*para desaparecer quando estiver fora do container*/
+}
+
+.VideoFooterMusic__text p{
+    animation: moveTheText 3s infinite linear;
+}
+
+.VideoFooter__record{
+    animation: spinTheRecord 3s infinite linear;/*chama a função key, roda em 3segundos, infinitamente, sem parar*/
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+    height: 50px;
+    filter: invert(1);/*vai inverter a cor da imagem*/
+
+
+}
+
+/*criar a animação em css*/
+/* qual a posição iniciar e final*/
+@keyframes spinTheRecord {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes moveTheText {
+0%{
+    transform: translateX(100%);
+}
+100%{
+    transform: translateX(-100%);
+}
+}
