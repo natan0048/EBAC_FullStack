@@ -1,0 +1,10 @@
+.VideoSideBarJS{
+     position: absolute;
+     top: 200px;
+     right: 10px;
+     color: white;
+}
+.VideoSideBarJS__option{
+     padding: 20px;
+     text-align: center;
+}
