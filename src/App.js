@@ -1,31 +1,38 @@
-
-import './App.css';
+import React, { useEffect, useState } from "react"
+import "./App.css"
 import Video from "./Pages/Video"
-
+import db from "./config/firebase"
+import { collection, getDocs } from "firebase/firestore/lite"
 
 function App() {
+  const [video, setVideos] = useState([]);
+  async function getVideos() {
+    const videoCollection = collection(db, "videos");
+    const videosSnapshot = await getDocs(videoCollection);
+    const videoList = videosSnapshot.docs.map((doc) => doc.data());
+    setVideos(videoList);
+  }
+
+  useEffect(() => {
+    getVideos();
+  }, []);
+
   return (
     <div className="App">
-      <div className='App__Video'>
-        <Video
-        likes = {100}
-        messages = {200}
-        shares = {300}
-        name = "Natanael"
-        description = "Bracker o goleiro"
-        music = "musica epica"
-        video = "https://firebasestorage.googleapis.com/v0/b/jornada2-eb156.appspot.com/o/brecker2.mp4?alt=media&token=b7e3ebf7-89a0-47a0-8a34-66f1176a71e3"
-        />
-        <Video
-        likes = {111}
-        messages = {222}
-        shares = {333}
-        name = "Luiz"
-        description = "Falando com a gata"
-        music = "musica gringa"
-        video = "https://poqlymuephttfsljdabn.supabase.co/storage/v1/object/public/jornadadev/bird.mp4"
-        />
-        
+      <div className="App__Video">
+        {video.map((item) => {
+          return (
+            <Video
+              likes={item.likes}
+              messages={item.messages}
+              shares={item.shares}
+              name={item.name}
+              description={item.description}
+              music={item.music}
+              url={item.url}
+            />
+          );
+        })}
       </div>
     </div>
   );

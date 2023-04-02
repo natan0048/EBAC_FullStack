@@ -4,7 +4,7 @@ import VideoSideBar from "./componentes/sideBar/VideoSideBar";
 import "./Video.css";
 
 
-function Video({likes, messages, shares, name, description, music, video}) {
+function Video({likes, messages, shares, name, description, music, url}) {
   const videoRef = useRef(null);
   const [play, setPlay] = useState(false);
   function handdleStart() {
@@ -23,7 +23,7 @@ function Video({likes, messages, shares, name, description, music, video}) {
         ref={videoRef}
         onClick={handdleStart}
         loop
-        src={video}></video>
+        src={url}></video>
       <VideoSideBar
       likes = {likes}
       messages = {messages}
